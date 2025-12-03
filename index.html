@@ -3,34 +3,35 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Telyxor Client — Prank Demo</title>
-<meta name="description" content="Telyxor Client — демо пранк-страница. Никаких реальных оплат." />
-<!-- =========================
-     Стили — всё в одном файле
-     ========================= -->
+<title>Telyxor Client - Prank</title>
+<meta name="description" content="Telyxor Client - Prank. RustEx + Minecraft unified client page." />
 <style>
+/* ===========================
+   Telyxor Client - single file
+   Dark black / orange theme
+   =========================== */
+
 /* Reset */
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
 body{
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: radial-gradient(1200px 600px at 10% 10%, #0b0b0b 0%, #050505 30%, #020202 100%);
-  color:#fff;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, #070707 0%, #020202 40%, #000 100%);
+  color:#e9e6e2;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
-  line-height:1.4;
-  padding:32px;
+  padding:28px;
 }
 
 /* Container */
 .container{
-  max-width:1100px;
+  max-width:1200px;
   margin:0 auto;
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border:1px solid rgba(255,140,0,0.06);
-  border-radius:16px;
-  padding:28px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
+  border:1px solid rgba(255,120,0,0.06);
+  border-radius:14px;
+  padding:26px;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
   position:relative;
   overflow:hidden;
 }
@@ -43,18 +44,18 @@ body{
   margin-bottom:20px;
 }
 .logo{
-  width:84px;
-  height:84px;
+  width:88px;
+  height:88px;
   border-radius:12px;
   background: linear-gradient(135deg,#ff7a00,#ff3d00);
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow: 0 6px 30px rgba(255,90,0,0.12);
+  box-shadow: 0 10px 40px rgba(255,90,0,0.12);
   position:relative;
   overflow:hidden;
 }
-.logo svg{width:56px;height:56px;filter:drop-shadow(0 6px 18px rgba(255,90,0,0.12));}
+.logo svg{width:56px;height:56px;filter:drop-shadow(0 8px 20px rgba(255,90,0,0.12));}
 .title{
   display:flex;
   flex-direction:column;
@@ -63,34 +64,18 @@ body{
   font-size:22px;
   letter-spacing:0.6px;
   margin-bottom:4px;
-  color: #ffb07a;
-  text-shadow: 0 2px 18px rgba(255,120,0,0.08);
+  color:#ffb07a;
 }
 .title p{
   font-size:13px;
-  color: #cfcfcf;
-  opacity:0.9;
+  color:#cfcfcf;
+  opacity:0.95;
 }
 
-/* Ribbon */
-.ribbon{
-  position:absolute;
-  right:-80px;
-  top:-40px;
-  transform:rotate(25deg);
-  background: linear-gradient(90deg, rgba(255,120,0,0.12), rgba(255,60,0,0.06));
-  color:#fff;
-  padding:8px 120px;
-  font-weight:700;
-  letter-spacing:1px;
-  opacity:0.12;
-  pointer-events:none;
-}
-
-/* Main layout */
+/* Grid */
 .grid{
   display:grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 1fr 420px;
   gap:20px;
   align-items:start;
 }
@@ -101,15 +86,11 @@ body{
   border-radius:12px;
   padding:18px;
   border:1px solid rgba(255,140,0,0.04);
-  box-shadow: 0 6px 30px rgba(0,0,0,0.6);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
 }
 
-/* Product list */
-.products h2{
-  color:#ffb07a;
-  margin-bottom:12px;
-  font-size:18px;
-}
+/* Products */
+.products h2{color:#ffb07a;margin-bottom:12px;font-size:18px}
 .product{
   display:flex;
   gap:12px;
@@ -117,7 +98,7 @@ body{
   padding:12px;
   border-radius:10px;
   margin-bottom:12px;
-  transition:transform .28s ease, box-shadow .28s ease;
+  transition:transform .24s ease, box-shadow .24s ease;
   background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
 }
 .product:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
@@ -129,18 +110,20 @@ body{
 }
 .product .meta{flex:1}
 .product .meta h3{font-size:16px;color:#fff;margin-bottom:6px}
-.product .meta p{font-size:13px;color:#d0d0d0;opacity:0.9}
+.product .meta p{font-size:13px;color:#d0d0d0;opacity:0.95}
 .product .actions{display:flex;flex-direction:column;gap:8px}
+
+/* Buttons */
 .btn{
   background: linear-gradient(90deg,#ff7a00,#ff3d00);
   color:#0b0b0b;
-  padding:8px 12px;
-  border-radius:8px;
-  font-weight:700;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:800;
   cursor:pointer;
   border:none;
-  transition:transform .18s ease, box-shadow .18s ease, opacity .18s;
-  box-shadow: 0 8px 30px rgba(255,90,0,0.12);
+  transition:transform .14s ease, box-shadow .14s ease, opacity .14s;
+  box-shadow: 0 10px 30px rgba(255,90,0,0.12);
 }
 .btn.secondary{
   background:transparent;
@@ -149,15 +132,11 @@ body{
   box-shadow:none;
 }
 .btn:active{transform:translateY(2px)}
-.small{font-size:13px;padding:6px 10px}
+.small{font-size:13px;padding:8px 10px}
 
 /* Sidebar */
 .sidebar h3{color:#ffb07a;margin-bottom:10px}
-.pricing{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
+.pricing{display:flex;flex-direction:column;gap:10px}
 .price-card{
   background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
   border-radius:10px;
@@ -176,37 +155,35 @@ body{
 .currency{display:flex;gap:8px;align-items:center}
 .flag{font-size:18px}
 
-/* Selector */
-.selector{
+/* Payment area hidden initially */
+.payment-area{
+  margin-top:14px;
+  display:none;
+  gap:12px;
+  flex-direction:column;
+}
+.payment-area.visible{display:flex}
+
+/* Duration selector */
+.duration{
   display:flex;
   gap:8px;
-  margin-top:12px;
-  flex-wrap:wrap;
+  margin-top:8px;
 }
-.option{
-  padding:10px 12px;
-  border-radius:8px;
-  background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
-  border:1px solid rgba(255,140,0,0.03);
-  cursor:pointer;
-  color:#fff;
-  font-weight:600;
+.duration .dur{
+  padding:10px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,140,0,0.06);cursor:pointer;color:#fff;font-weight:700;
 }
-.option.active{
-  background: linear-gradient(90deg,#ff7a00,#ff3d00);
-  color:#0b0b0b;
-  box-shadow:0 10px 30px rgba(255,90,0,0.12);
-}
+.duration .dur.active{background:linear-gradient(90deg,#ff7a00,#ff3d00);color:#0b0b0b;box-shadow:0 10px 30px rgba(255,90,0,0.12)}
 
-/* Payment methods */
-.methods{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+/* Methods */
+.methods{display:flex;flex-direction:column;gap:8px;margin-top:8px}
 .method{
   display:flex;align-items:center;gap:12px;padding:10px;border-radius:8px;
   background:linear-gradient(90deg, rgba(255,255,255,0.005), rgba(255,255,255,0.002));
   border:1px solid rgba(255,140,0,0.03);
   cursor:pointer;
 }
-.method:hover{transform:translateY(-4px);transition:transform .18s}
+.method.selected{outline:2px solid rgba(255,140,0,0.12);border:1px solid rgba(255,140,0,0.08)}
 .method .dot{width:12px;height:12px;border-radius:50%;background:#ff7a00;box-shadow:0 6px 18px rgba(255,90,0,0.12)}
 
 /* Footer */
@@ -232,115 +209,76 @@ body{
 .modal p{color:#d0d0d0;margin-bottom:12px}
 .modal .actions{display:flex;gap:10px;justify-content:flex-end}
 
-/* Animated background accents */
+/* Accents */
 .accent{
-  position:absolute;
-  pointer-events:none;
-  mix-blend-mode:screen;
-  opacity:0.12;
+  position:absolute;pointer-events:none;mix-blend-mode:screen;opacity:0.12;
 }
 .accent.one{width:420px;height:420px;right:-120px;top:-120px;background:radial-gradient(circle at 30% 30%, #ff7a00, transparent 40%);}
 .accent.two{width:320px;height:320px;left:-80px;bottom:-80px;background:radial-gradient(circle at 70% 70%, #ff3d00, transparent 40%);transform:rotate(20deg);}
 
-/* Glow animation */
-@keyframes pulse {
-  0%{filter:blur(0px);opacity:0.12;transform:scale(1)}
-  50%{filter:blur(8px);opacity:0.22;transform:scale(1.06)}
-  100%{filter:blur(0px);opacity:0.12;transform:scale(1)}
-}
+/* Animations */
+@keyframes pulse {0%{filter:blur(0px);opacity:0.12;transform:scale(1)}50%{filter:blur(8px);opacity:0.22;transform:scale(1.06)}100%{filter:blur(0px);opacity:0.12;transform:scale(1)}}
 .logo{animation:pulse 6s ease-in-out infinite}
-
-/* Fancy gradient text */
-.gradient-text{
-  background:linear-gradient(90deg,#ffb07a,#ff3d00);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
 
 /* Responsive */
 @media (max-width:980px){
-  .grid{grid-template-columns:1fr; padding-bottom:20px}
+  .grid{grid-template-columns:1fr}
   .sidebar{order:-1}
   .logo{width:64px;height:64px}
 }
 </style>
-
 </head>
 <body>
 <div class="container" role="main" aria-labelledby="main-title">
-  <div class="ribbon">PRANK DEMO</div>
-
   <header class="header">
     <div class="logo" aria-hidden="true">
-      <!-- Inline SVG logo -->
       <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="6" y="6" width="52" height="52" rx="10" fill="url(#g1)"/>
         <defs>
           <linearGradient id="g1" x1="0" x2="1">
             <stop offset="0" stop-color="#ffb07a"/>
             <stop offset="1" stop-color="#ff3d00"/>
           </linearGradient>
         </defs>
-        <rect x="6" y="6" width="52" height="52" rx="10" fill="url(#g1)"/>
         <path d="M20 40 L32 20 L44 40 Z" fill="#0b0b0b" opacity="0.95"/>
       </svg>
     </div>
-
     <div class="title">
-      <h1 id="main-title">Telyxor Client <span class="gradient-text">— Demo</span></h1>
-      <p>Продукты: <strong>RustEx</strong> · <strong>Minecraft</strong> — пранк-страница, всё в одном файле.</p>
+      <h1 id="main-title">Telyxor Client - Prank</h1>
+      <p>RustEx + Minecraft — единый клиент для RustEx сервера и Minecraft. Нажми Купить чтобы начать.</p>
     </div>
   </header>
 
   <div class="grid">
-    <!-- Left column: products -->
+    <!-- Left: products -->
     <section class="card products" aria-label="Продукты">
-      <h2>Продукты</h2>
+      <h2>Продукт</h2>
 
-      <!-- Product: RustEx -->
-      <article class="product" data-product="RustEx">
+      <article class="product" data-product="RustEx-Minecraft">
         <div class="icon" aria-hidden="true">
-          <!-- small svg icon -->
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="12" cy="12" r="10" fill="#fff" opacity="0.06"/>
             <path d="M6 16 L12 8 L18 16" stroke="#0b0b0b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <div class="meta">
-          <h3>RustEx</h3>
-          <p>Чит для Rust — демо-версия. Это пранк: реальные покупки отключены.</p>
+          <h3>RustEx - Minecraft</h3>
+          <p>Единый чит для RustEx и Minecraft. Выберите Купить, затем срок и способ оплаты.</p>
         </div>
         <div class="actions">
-          <button class="btn" data-product="RustEx" data-action="buy">Купить</button>
-          <button class="btn secondary small" data-action="details" data-product="RustEx">Подробнее</button>
-        </div>
-      </article>
-
-      <!-- Product: Minecraft -->
-      <article class="product" data-product="Minecraft">
-        <div class="icon" aria-hidden="true">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="3" width="18" height="18" rx="3" fill="#fff" opacity="0.06"/>
-            <path d="M7 12h10" stroke="#0b0b0b" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="meta">
-          <h3>Minecraft</h3>
-          <p>Чит для Minecraft — демонстрация интерфейса покупки и выбора срока.</p>
-        </div>
-        <div class="actions">
-          <button class="btn" data-product="Minecraft" data-action="buy">Купить</button>
-          <button class="btn secondary small" data-action="details" data-product="Minecraft">Подробнее</button>
+          <button class="btn" data-product="RustEx-Minecraft" data-action="buy">Купить</button>
+          <button class="btn secondary small" data-action="details" data-product="RustEx-Minecraft">Подробнее</button>
         </div>
       </article>
 
       <div style="margin-top:14px;color:#cfcfcf;font-size:13px">
-        <strong>Примечание:</strong> Это пранк-страница. Никаких реальных платёжных операций не выполняется.
+        <strong>Подсказка</strong>: в заголовке указано что это Prank.
       </div>
     </section>
 
-    <!-- Right column: sidebar / pricing -->
+    <!-- Right: purchase panel -->
     <aside class="card sidebar" aria-label="Покупка">
-      <h3>Выберите продукт и срок</h3>
+      <h3>Панель покупки</h3>
 
       <div class="pricing">
         <div class="price-card" id="price-7">
@@ -373,241 +311,286 @@ body{
 
       <div style="margin-top:12px">
         <div style="font-weight:700;color:#ffb07a;margin-bottom:8px">Способ оплаты</div>
-        <div class="methods" role="radiogroup" aria-label="Способы оплаты">
-          <div class="method" data-method="ua-card" tabindex="0">
-            <div class="dot" aria-hidden="true"></div>
-            <div>
-              <div style="font-weight:700">UA Card</div>
-              <div style="font-size:12px;color:#cfcfcf">Оплата картой (демо)</div>
+
+        <!-- Payment area hidden until buy clicked -->
+        <div class="payment-area" id="paymentArea" aria-hidden="true">
+          <div style="font-size:13px;color:#d0d0d0">Выбран срок: <span id="selectedDurationLabel">7 Дней</span></div>
+
+          <div class="duration" role="tablist" aria-label="Срок">
+            <button class="dur active" data-duration="7">7 Дней</button>
+            <button class="dur" data-duration="30">30 Дней</button>
+            <button class="dur" data-duration="forever">Навсегда</button>
+          </div>
+
+          <div class="methods" role="radiogroup" aria-label="Методы оплаты">
+            <div class="method" data-method="ua-card" tabindex="0">
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <div style="font-weight:700">UA Card</div>
+                <div style="font-size:12px;color:#cfcfcf">Оплата картой</div>
+              </div>
+            </div>
+            <div class="method" data-method="cryptobot" tabindex="0">
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <div style="font-weight:700">CryptoBot</div>
+                <div style="font-size:12px;color:#cfcfcf">Крипто-оплата</div>
+              </div>
+            </div>
+            <div class="method" data-method="ru-another" tabindex="0">
+              <div class="dot" aria-hidden="true"></div>
+              <div>
+                <div style="font-weight:700">RU / Another</div>
+                <div style="font-size:12px;color:#cfcfcf">Переход на Funpay</div>
+              </div>
             </div>
           </div>
-          <div class="method" data-method="cryptobot" tabindex="0">
-            <div class="dot" aria-hidden="true"></div>
-            <div>
-              <div style="font-weight:700">CryptoBot</div>
-              <div style="font-size:12px;color:#cfcfcf">Крипто-демо</div>
-            </div>
+
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <button class="btn" id="payNowBtn">Оплатить</button>
+            <button class="btn secondary" id="cancelPayBtn">Отмена</button>
           </div>
-          <div class="method" data-method="ru-another" tabindex="0">
-            <div class="dot" aria-hidden="true"></div>
-            <div>
-              <div style="font-weight:700">RU / Another</div>
-              <div style="font-size:12px;color:#cfcfcf">Другие способы (демо)</div>
-            </div>
-          </div>
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:8px">
+          <button class="btn" id="openBuyPanelBtn">Перейти к оплате</button>
+          <button class="btn secondary" id="discordBtn">Discord</button>
         </div>
       </div>
 
-      <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn" id="proceedBtn">Перейти к оплате</button>
-        <button class="btn secondary" id="discordBtn">Discord сервер</button>
-      </div>
-
       <div class="footer" style="margin-top:16px">
-        <div>Версия <strong>1.0-prank</strong></div>
+        <div>Версия <strong>1.0</strong></div>
         <div style="color:#bdbdbd">Telyxor Client</div>
       </div>
     </aside>
   </div>
 
-  <!-- Accents -->
   <div class="accent one" aria-hidden="true"></div>
   <div class="accent two" aria-hidden="true"></div>
 </div>
 
-<!-- Modal markup -->
+<!-- Modal -->
 <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
   <div class="modal" role="document" aria-labelledby="modalTitle">
-    <h3 id="modalTitle">Окно покупки</h3>
-    <p id="modalText">Здесь будет информация о покупке. Это демонстрация — реальные платежи отключены.</p>
+    <h3 id="modalTitle">Информация</h3>
+    <p id="modalText"></p>
     <div class="actions">
       <button class="btn secondary" id="modalClose">Закрыть</button>
-      <button class="btn" id="modalConfirm">ОК</button>
+      <button class="btn" id="modalOk">ОК</button>
     </div>
   </div>
 </div>
 
-<!-- =========================
-     Скрипты — всё в одном файле
-     ========================= -->
 <script>
-/*
-  Telyxor Client — Prank Demo
-  Скрипт управляет выбором продукта, сроком и методом оплаты.
-  ВАЖНО: это демонстрация. Реальных редиректов на платёжные сервисы нет.
+/* Telyxor Client - single file logic
+   Behavior:
+   - Нажимаешь Купить у продукта -> открывается панель оплаты (payment-area)
+   - Выбираешь срок (7/30/forever) и метод оплаты
+   - Нажимаешь Оплатить -> если метод ru-another -> редирект на Funpay ссылку в зависимости от срока
+     ссылки (как просили):
+       7 дней  -> https://funpay.com/lots/offer?id=55518334
+       30 дней -> https://funpay.com/lots/offer?id=54832103
+       навсегда-> https://funpay.com/lots/offer?id=54907742
+     если выбран ua-card или cryptobot -> открывается Discord invite https://discord.gg/y6vd5dz6uh
+   - Панель оплаты появляется только после нажатия Купить или Перейти к оплате
 */
 
-/* --- State --- */
+/* State */
 const state = {
   product: null,
-  duration: '7', // '7', '30', 'forever'
-  method: null, // 'ua-card', 'cryptobot', 'ru-another'
+  duration: '7',
+  method: null,
 };
 
-/* --- Helpers --- */
-function qs(sel, ctx=document){ return ctx.querySelector(sel) }
-function qsa(sel, ctx=document){ return Array.from(ctx.querySelectorAll(sel)) }
+/* Funpay mapping */
+const FUNPAY_LINKS = {
+  '7': 'https://funpay.com/lots/offer?id=55518334',
+  '30': 'https://funpay.com/lots/offer?id=54832103',
+  'forever': 'https://funpay.com/lots/offer?id=54907742'
+};
+const DISCORD_INVITE = 'https://discord.gg/y6vd5dz6uh';
 
-/* --- Initialize UI --- */
+/* Helpers */
+const qs = (s, ctx=document) => ctx.querySelector(s);
+const qsa = (s, ctx=document) => Array.from(ctx.querySelectorAll(s));
+
+/* Init */
 document.addEventListener('DOMContentLoaded', () => {
-  // product buttons
-  qsa('[data-action="buy"]').forEach(btn=>{
-    btn.addEventListener('click', onBuyClick)
+  // Buy buttons on products
+  qsa('[data-action="buy"]').forEach(btn => {
+    btn.addEventListener('click', onProductBuy);
   });
-  qsa('[data-action="details"]').forEach(btn=>{
-    btn.addEventListener('click', onDetailsClick)
-  });
-
-  // methods
-  qsa('.method').forEach(el=>{
-    el.addEventListener('click', ()=>selectMethod(el.dataset.method));
-    el.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); selectMethod(el.dataset.method) }});
+  qsa('[data-action="details"]').forEach(btn => {
+    btn.addEventListener('click', onDetails);
   });
 
-  // duration quick select by clicking price cards
-  ['#price-7','#price-30','#price-forever'].forEach(id=>{
-    const el = qs(id);
-    if(el) el.addEventListener('click', ()=>selectDuration(id));
+  // Open panel button
+  qs('#openBuyPanelBtn').addEventListener('click', () => {
+    // If product not selected, auto-select the only product
+    if(!state.product){
+      const firstProduct = qsa('.product')[0];
+      if(firstProduct) state.product = firstProduct.dataset.product || 'RustEx-Minecraft';
+    }
+    showPaymentArea();
   });
 
-  // proceed button
-  qs('#proceedBtn').addEventListener('click', onProceed);
-  qs('#discordBtn').addEventListener('click', ()=>openDiscord());
+  // Duration buttons
+  qsa('.dur').forEach(btn => {
+    btn.addEventListener('click', () => {
+      setDuration(btn.dataset.duration);
+    });
+  });
 
-  // modal
+  // Methods
+  qsa('.method').forEach(m => {
+    m.addEventListener('click', () => selectMethod(m.dataset.method));
+    m.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectMethod(m.dataset.method); }});
+  });
+
+  // Pay / Cancel
+  qs('#payNowBtn').addEventListener('click', onPayNow);
+  qs('#cancelPayBtn').addEventListener('click', hidePaymentArea);
+  qs('#discordBtn').addEventListener('click', () => openUrl(DISCORD_INVITE));
+
+  // Modal
   qs('#modalClose').addEventListener('click', closeModal);
-  qs('#modalConfirm').addEventListener('click', ()=>{ closeModal(); });
+  qs('#modalOk').addEventListener('click', closeModal);
 
-  // default selections
-  selectDuration('#price-7');
+  // Default duration label
+  updateDurationLabel();
 });
 
-/* --- UI actions --- */
-function onBuyClick(e){
-  const product = e.currentTarget.dataset.product || 'Unknown';
+/* Handlers */
+function onProductBuy(e){
+  const product = e.currentTarget.dataset.product || 'RustEx-Minecraft';
   state.product = product;
-  showModal(`Покупка: ${product}`, `Вы выбрали продукт <strong>${product}</strong>. Выберите срок и способ оплаты в правой панели, затем нажмите "Перейти к оплате".`);
+  showPaymentArea();
+  // focus first method for accessibility
+  setTimeout(()=> {
+    const firstMethod = qsa('.method')[0];
+    if(firstMethod) firstMethod.focus();
+  }, 120);
 }
 
-function onDetailsClick(e){
-  const product = e.currentTarget.dataset.product || 'Unknown';
-  showModal(`Информация — ${product}`, `Это демонстрационная страница продукта <strong>${product}</strong>. Здесь можно показать фичи, скриншоты и т.д. (пранк).`);
+function onDetails(e){
+  const product = e.currentTarget.dataset.product || 'RustEx-Minecraft';
+  showModal('Подробнее о продукте', `Продукт: <strong>${escapeHtml(product)}</strong><br>RustEx и Minecraft объединены в один клиент.`);
 }
 
-function selectMethod(method){
-  state.method = method;
-  // visual
-  qsa('.method').forEach(el=>el.style.outline='none');
-  const el = qsa(`.method[data-method="${method}"]`)[0];
-  if(el){
-    el.style.outline = '2px solid rgba(255,140,0,0.12)';
-    el.style.border = '1px solid rgba(255,140,0,0.08)';
+/* Payment area control */
+function showPaymentArea(){
+  const area = qs('#paymentArea');
+  if(area){
+    area.classList.add('visible');
+    area.setAttribute('aria-hidden','false');
+  }
+  // ensure default selections
+  setDuration(state.duration || '7');
+  if(!state.method) selectMethod('ua-card'); // default method selected visually
+}
+
+function hidePaymentArea(){
+  const area = qs('#paymentArea');
+  if(area){
+    area.classList.remove('visible');
+    area.setAttribute('aria-hidden','true');
   }
 }
 
-function selectDuration(id){
-  if(id.endsWith('7')) state.duration='7';
-  else if(id.endsWith('30')) state.duration='30';
-  else state.duration='forever';
-
-  // visual
-  qsa('.price-card').forEach(c=>c.style.boxShadow='none');
-  const el = qs(id);
-  if(el) el.style.boxShadow = '0 18px 40px rgba(255,90,0,0.08)';
+/* Duration */
+function setDuration(d){
+  state.duration = d;
+  qsa('.dur').forEach(b => b.classList.remove('active'));
+  const btn = qsa(`.dur[data-duration="${d}"]`)[0];
+  if(btn) btn.classList.add('active');
+  updateDurationLabel();
 }
 
-/* --- Modal control --- */
-function showModal(title, html){
-  const backdrop = qs('#modalBackdrop');
-  qs('#modalTitle').innerHTML = title;
-  qs('#modalText').innerHTML = html;
-  backdrop.style.display = 'flex';
-  backdrop.setAttribute('aria-hidden','false');
-}
-function closeModal(){
-  const backdrop = qs('#modalBackdrop');
-  backdrop.style.display = 'none';
-  backdrop.setAttribute('aria-hidden','true');
+/* Methods */
+function selectMethod(m){
+  state.method = m;
+  qsa('.method').forEach(el => el.classList.remove('selected'));
+  const el = qsa(`.method[data-method="${m}"]`)[0];
+  if(el) el.classList.add('selected');
 }
 
-/* --- Proceed to payment (demo-safe) --- */
-function onProceed(){
-  // Basic checks
+/* Pay now */
+function onPayNow(){
   if(!state.product){
-    showModal('Не выбран продукт', 'Пожалуйста, выберите продукт слева или нажмите кнопку "Купить" у нужного продукта.');
+    showModal('Ошибка', 'Продукт не выбран. Нажмите Купить у нужного продукта.');
     return;
   }
   if(!state.method){
-    showModal('Не выбран способ оплаты', 'Пожалуйста, выберите способ оплаты в правой панели.');
+    showModal('Ошибка', 'Выберите способ оплаты.');
     return;
   }
 
-  // Simulate behavior: for methods 'ua-card' and 'cryptobot' open Discord (demo).
-  // For 'ru-another' show a special message (originally мог быть редирект — в демо мы не делаем реальных редиректов).
-  if(state.method === 'ua-card' || state.method === 'cryptobot'){
-    showModal('Переход на поддержку', `Вы выбрали <strong>${prettyMethod(state.method)}</strong>. Для завершения (демо) вы будете перенаправлены на наш Discord сервер.` + 
-      `<div style="margin-top:8px;font-size:13px;color:#d0d0d0">Это демонстрация — реальные платежи отключены.</div>`);
-    // small delay to mimic redirect
-    setTimeout(()=>{ openDiscord(); }, 1200);
-    return;
-  }
-
+  // If RU / Another -> redirect to Funpay link based on duration
   if(state.method === 'ru-another'){
-    // In original request user wanted to redirect to external marketplace.
-    // For safety we do not include direct payment links. Show a clear demo message instead.
-    showModal('Внешний магазин (демо)', `Вы выбрали <strong>RU / Another</strong>. В реальной версии здесь был бы переход на внешний магазин. В этой демонстрации реальные ссылки отключены.` +
-      `<div style="margin-top:8px;font-size:13px;color:#d0d0d0">Если вы хотите, можно заменить это поведение на безопасный редирект или показать инструкцию по оплате.</div>`);
+    const link = FUNPAY_LINKS[state.duration] || FUNPAY_LINKS['7'];
+    // perform redirect
+    openUrl(link);
+    return;
+  }
+
+  // For UA Card and CryptoBot -> open Discord invite
+  if(state.method === 'ua-card' || state.method === 'cryptobot'){
+    openUrl(DISCORD_INVITE);
     return;
   }
 
   // fallback
-  showModal('Готово', 'Действие выполнено (демо).');
+  showModal('Инфо', 'Выбрано: ' + escapeHtml(state.method));
 }
 
-function prettyMethod(m){
-  if(m==='ua-card') return 'UA Card';
-  if(m==='cryptobot') return 'CryptoBot';
-  if(m==='ru-another') return 'RU / Another';
-  return m;
-}
-
-/* --- Open Discord (safe) --- */
-function openDiscord(){
-  // Open the provided Discord invite in a new tab (user provided invite).
-  // This is allowed as it's a community link, not a payment.
-  const url = 'https://discord.gg/y6vd5dz6uh';
+/* Utilities */
+function openUrl(url){
   try{
     window.open(url, '_blank', 'noopener');
   }catch(e){
-    // fallback: show modal with link text
-    showModal('Открыть Discord', `Ссылка: <a href="${url}" target="_blank" rel="noopener">${url}</a>`);
+    showModal('Ссылка', `Откройте: <a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(url)}</a>`);
   }
 }
 
-/* --- Extra visual niceties: animated title effect --- */
-(function animatedTitle(){
-  const title = document.querySelector('.title h1');
-  if(!title) return;
-  let hue = 20;
-  setInterval(()=>{
-    hue = (hue + 1) % 360;
-    title.style.textShadow = `0 6px 24px hsla(${hue},100%,50%,0.08)`;
-  }, 120);
-})();
+function showModal(title, html){
+  qs('#modalTitle').innerHTML = title;
+  qs('#modalText').innerHTML = html;
+  const mb = qs('#modalBackdrop');
+  mb.style.display = 'flex';
+  mb.setAttribute('aria-hidden','false');
+}
 
-/* --- Accessibility: close modal on ESC --- */
-document.addEventListener('keydown', (e)=>{
+function closeModal(){
+  const mb = qs('#modalBackdrop');
+  mb.style.display = 'none';
+  mb.setAttribute('aria-hidden','true');
+}
+
+function updateDurationLabel(){
+  const label = qs('#selectedDurationLabel');
+  if(!label) return;
+  if(state.duration === '7') label.textContent = '7 Дней';
+  else if(state.duration === '30') label.textContent = '30 Дней';
+  else label.textContent = 'Навсегда';
+}
+
+/* Small helper to escape HTML in text nodes */
+function escapeHtml(str){
+  return String(str).replace(/[&<>"']/g, function(m){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+  });
+}
+
+/* Close modal on ESC */
+document.addEventListener('keydown', (e) => {
   if(e.key === 'Escape'){
-    const backdrop = qs('#modalBackdrop');
-    if(backdrop && backdrop.style.display === 'flex') closeModal();
+    const mb = qs('#modalBackdrop');
+    if(mb && mb.style.display === 'flex') closeModal();
   }
 });
 
-/* --- Decorative console message (for fun) --- */
-console.log('%cTelyxor Client — Demo (prank). No real payments here.', 'color: #ffb07a; background: #111; padding:6px; border-radius:6px;');
-
+/* Decorative console message */
+console.log('%cTelyxor Client - Prank loaded', 'color:#ffb07a;background:#111;padding:6px;border-radius:6px;');
 </script>
-
-<!-- End of file -->
 </body>
 </html>
